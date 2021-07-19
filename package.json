@@ -1,0 +1,58 @@
+{
+  "name": "vite-plugin-main-transform",
+  "version": "0.1.0",
+  "description": "⚡️ A Vite plugin which allows you transform main.js with Node.js API",
+  "module": "es/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src",
+    "es"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OrekiSH/vite-plugin-main-transform"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "vue",
+    "vuecomponent",
+    "vue3"
+  ],
+  "authors": [
+    "OrekiSH <orekish@163.com> (https://github.com/OrekiSH)"
+  ],
+  "license": "MIT",
+  "bugs": "https://github.com/OrekiSH/vite-plugin-main-transform/issues",
+  "homepage": "https://github.com/OrekiSH/vite-plugin-main-transform",
+  "devDependencies": {
+    "@types/babel__core": "^7.1.15",
+    "@types/node": "^16.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "typescript": "^4.3.2"
+  },
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:es",
+    "build:es": "tsc --p ./tsconfig.es.json",
+    "build:cjs": "tsc",
+    "lint": "eslint .",
+    "lintfix": "eslint --fix .",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.ts": "npm run lint"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "babel-plugin-vue-components": "^0.1.4"
+  }
+}
