@@ -1,9 +1,10 @@
 import type { RegisterOptions } from 'babel-plugin-vue-components';
 import type { PlatformPath } from 'path';
 import fs from 'fs';
-import babel from '@babel/core';
+import * as babel from '@babel/core';
 
 const path = require('path');
+const process = require('process');
 const VueComponentsPlugin = require('babel-plugin-vue-components');
 
 export interface MainTransformOptions extends RegisterOptions {
@@ -26,7 +27,8 @@ export default function transform(options: MainTransformOptions) {
     extension,
     quotes,
   } = options || {};
-  const mainPath = path.join(__dirname, main);
+  const dirname = process.cwd();
+  const mainPath = path.join(dirname, main);
 
   return {
     name: 'vite-plugin-main-transform',
@@ -38,13 +40,13 @@ export default function transform(options: MainTransformOptions) {
             fs,
             path,
             babel,
-            dirname: __dirname,
+            dirname,
           });
         }
 
         if (Array.isArray(include)) {
           // register gloabl components, 注册全局组件
-          const includePath = include.map((e) => path.resolve(__dirname, e));
+          const includePath = include.map((e) => path.resolve(dirname, e));
           const { code: transformCode } = babel.transform(code, {
             plugins: [
               [VueComponentsPlugin, {
@@ -55,6 +57,8 @@ export default function transform(options: MainTransformOptions) {
                 quotes,
               }],
             ],
+            configFile: false,
+            babelrc: false,
           }) || {};
 
           return transformCode;

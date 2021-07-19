@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-main-transform",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "⚡️ A Vite plugin which allows you transform main.js with Node.js API",
   "module": "es/index.js",
   "main": "lib/index.js",
