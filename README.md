@@ -1,6 +1,6 @@
 <h1 align="center">vite-plugin-main-transform</h1>
 
-⚡️ A Vite plugin which works just like env property in Nuxt.js
+⚡️ Custom transform your main.js(.ts) in your vue project, auto import and global register Vue component(optional)
 
 English | <a href="https://github.com/OrekiSH/vite-plugin-main-transform/blob/main/README-zh_CN.md">简体中文</a>
 
@@ -114,10 +114,3 @@ Type: `Boolean`<br>
 Default: `true`
 
 Keep file extension for import file or not.
-
-### `quotes`
-
-Type: `'single' | 'double'`<br>
-Default: `'single'`
-
-Single or double quotes around import file path.

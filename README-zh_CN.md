@@ -1,6 +1,6 @@
 <h1 align="center">vite-plugin-main-transform</h1>
 
-自动引入并将Vue组件注册为全局组件
+自定义转换Vue项目的入口(main)文件, 自动引入并将Vue组件注册为全局组件(可选)
 
 <a href="https://github.com/OrekiSH/vite-plugin-main-transform/blob/main/README.md">English</a> | 简体中文
 
@@ -100,23 +100,9 @@ main.js文件相对于当前运行脚本的位置
 
 源代码转换函数, 返回值为转换后的代码
 
-### `semicolon`
-
-类型: `Boolean`<br>
-默认值: `true`
-
-语句末尾是否添加分号
-
 ### `extension`
 
 类型: `Boolean`<br>
 默认值: `true`
 
 导入文件是否保留文件后缀
-
-### `quotes`
-
-类型: `'single' | 'double'`<br>
-默认值: `'single'`
-
-导入文件使用单引号/双引号
