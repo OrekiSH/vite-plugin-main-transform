@@ -47,7 +47,14 @@ export default function transform(options: MainTransformOptions) {
 
         if (Array.isArray(include)) {
           // register gloabl components, 注册全局组件
-          const includePath = include.map((e) => path.resolve(dirname, e));
+          const includePath = include.map((e) => {
+            if (typeof e === 'string') return path.resolve(dirname, e);
+
+            return {
+              ...e,
+              path: path.resolve(dirname, e.path),
+            };
+          });
           const { code: transformCode } = babel.transform(code, {
             plugins: [
               [VueComponentsPlugin, {
