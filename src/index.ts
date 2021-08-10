@@ -34,9 +34,10 @@ export default function transform(options: MainTransformOptions) {
     name: 'vite-plugin-main-transform',
     transform(code: string, id: string) {
       if (id === mainPath) {
+        let result = code;
         // custom transformer, 自定义转换函数
         if (typeof transformer === 'function') {
-          return transformer(code, {
+          result = transformer(code, {
             fs,
             path,
             babel,
@@ -61,8 +62,10 @@ export default function transform(options: MainTransformOptions) {
             babelrc: false,
           }) || {};
 
-          return transformCode;
+          if (transformCode) result = transformCode;
         }
+
+        return result;
       }
 
       return code;
